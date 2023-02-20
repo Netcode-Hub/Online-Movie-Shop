@@ -1,0 +1,41 @@
+﻿@model MovieShop.Models.Producer
+
+@{
+    ViewData["Title"] = "Update Producer";
+}
+
+<div class="row">
+    <div class="col-md-8 offset-2">
+        <p><h1> Update @Model.FullName data </h1></p>
+        <div class="row">
+            <div class="col-md-8 offset-2">
+                <form asp-action="Edit" asp-controller="Producers">
+                    <div asp-validation-summary="All" class="text-danger"> </div>
+                    <div class="form-group text-center">
+                        <img id="ProfilePicturePreview" class="border-info rounded-circle" style="max-width:150px" />
+                    </div>
+                    <div class="form-group mt-3">
+                        <label asp-for="ProfilePictureURL" class="control-label pb-2"> </label>
+                        <input asp-for="ProfilePictureURL" id="ProfilePictureURL" class="form-control" />
+                        <span asp-validation-for="ProfilePictureURL" class="text-danger"> </span>
+                    </div>
+                    <div class="form-group mt-3">
+                        <label asp-for="FullName" class="control-label pb-2"> </label>
+                        <input asp-for="FullName" class="form-control" />
+                        <span asp-validation-for="FullName" class="text-danger"> </span>
+                    </div>
+                    <div class="form-group mt-3">
+                        <label asp-for="Bio" class="control-label pb-2"> </label>
+                        <textarea asp-for="Bio" class="form-control"> </textarea>
+                        <span asp-validation-for="Bio" class="text-danger"> </span>
+                    </div>
+                    <div class="form-control mt-3">
+                        <input type="submit" class="btn btn-outline-success float-right" value="Update" />
+                        <a class="btn btn-outline-secondary" asp-controller="Producers" asp-action="Index">Show All</a> |
+                        <a asp-controller="Producers" asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-outline-danger float-right"> <i class="fa fa-trash"></i> Delete</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,90 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - eTicket</title>
+    <link href="~/bootstrap-5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/fontawesome/css/all.min.css" rel="stylesheet" />
+</head>
+<body>
+
+
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow mb-3 bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index"><i class="fa fa-ticket fs-5"></i> eTicket</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Movies" asp-action="Index"> <i class="fa fa-home"></i> Home</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false"><i class="fa fa-microchip"></i> Management</a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a class="dropdown-item" asp-controller="Cinemas" asp-action="Index"> <i class="fa fa-restroom"></i> Cinemas</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" asp-controller="Producers" asp-action="Index"> <i class="fa fa-project-diagram"></i> Producers</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" asp-controller="Actors" asp-action="Index"> <i class="fa fa-people-group"></i> Actors</a>
+                                </li>
+                                @*<li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="#">Separated link</a></li>*@
+                            </ul>
+                        </li>
+                    </ul>
+                    <form class="d-flex">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success" type="submit">Search</button>
+                    </form>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container-fluid">
+        <main role="main">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2022 - eTicket - <a asp-area="" asp-controller="Movies" asp-action="Index">Home</a>
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/bootstrap-5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/fontawesome/js/all.min.js"></script>
+</body>
+</html>
+
+<script>
+    $(document).ready(function () {
+        var output = document.getElementById('ProfilePicturePreview');
+        output.src = $("#ProfilePictureURL").val();
+
+        var LogoOutput = $('.LogoPreview');
+        LogoOutput.src = $(".Logo").val();
+    });
+
+
+    $("#ProfilePictureURL").on("change", function () {
+        var output = document.getElementById('ProfilePicturePreview');
+        output.src = $(this).val();     
+    });
+
+    $("#Logo").on("change", function () {
+        var LogoOutput = document.getElementById('LogoPreview');
+        LogoOutput.src = $("#Logo").val();
+    });
+    
+
+</script>

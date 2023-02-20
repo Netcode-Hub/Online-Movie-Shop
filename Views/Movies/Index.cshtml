@@ -1,0 +1,71 @@
+﻿@model IEnumerable<Movie>
+
+@{
+    ViewData["Title"] = "List of Movies";
+}
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-4 col-xs-6 border-primary mb-3">
+            <div class="card mb-3" style="max-width: 540px;">
+                <div class="row g-0">
+                    <div class="col-md-12">
+                        <div class="card-header text-white bg-info">
+                            <p class="card-text">
+                                <h5 class="card-title" style="font-family:cursive; font-size:20px;">
+                                    @item.Name
+                                </h5>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <img src="@item.Image" width="100%" alt="@item.Name" />
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card-body">
+                            <p class="card-text"><b>Description:</b> @item.Desc </p>
+                            <p class="card-text"><b>Cinema:</b> @item.Cinema.Name </p>
+                            <p class="card-text"><b>Category:</b> @item.MovieCategory </p>
+                            <p class="card-text"><b>Start Date:</b> @item.StartDate.ToString("dd MMM yy") </p>
+                            <p class="card-text"><b>End Date</b> @item.EndDate.ToString("dd MMM yy") </p>
+                            <p class="card-text">
+                                <b>Status:</b>
+                                @if (DateTime.Now >= item.StartDate && DateTime.Now <= item.EndDate)
+                                {
+                                    <span class="badge bg-success text-white">Available</span>
+                                }
+                                else if (DateTime.Now > item.EndDate)
+                                {
+                                    <span class="badge bg-danger text-white">Expired</span>
+                                }
+                                else
+                                {
+                                    <span class="badge bg-primary text-white">Upcoming</span>
+                                }
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="card-footer">
+                            <p class="card-text text-center">
+                                <a class="btn btn-danger text-white">
+                                    <i class="fa fa-cart-plus"></i> Add to Cart (Price @item.Price.ToString("c"))
+                                </a>
+                            </p>
+                            <hr />
+                            <a asp-action="Edit" asp-controller="Movies" asp-route-id="@item.Id" class="btn btn-outline-primary"><i class="fa fa-pencil"></i> Edit</a> |
+                            <a asp-action="Details" asp-controller="Movies" asp-route-id="@item.Id" class="btn btn-outline-info"><i class="fa fa-eye"></i> Details</a> |
+                            <a asp-action="Delete" asp-controller="Movies" asp-route-id="@item.Id" class="btn btn-outline-danger"><i class="fa fa-trash"></i> Delete</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+<div class="text-white" style="position: fixed; right: 25px; bottom: 25px;">
+    <a asp-controller="Movies" asp-action="Create" class="btn btn-success">
+        <i class="fa fa-plus"> </i> Add New Movie
+    </a>
+</div>

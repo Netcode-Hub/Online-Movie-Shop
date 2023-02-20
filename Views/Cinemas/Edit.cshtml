@@ -1,0 +1,41 @@
+﻿@model MovieShop.Models.Cinema
+
+@{
+    ViewData["Title"] = "Update Cinema";
+}
+
+<div class="row">
+    <div class="col-md-8 offset-2">
+        <p><h1> Update @Model.Name data </h1></p>
+        <div class="row">
+            <div class="col-md-8 offset-2">
+                <form asp-action="Edit" asp-controller="Cinemas">
+                    <div asp-validation-summary="All" class="text-danger"> </div>
+                    <div class="form-group text-center">
+                        <img id="LogoPreview" class="border-info rounded-circle LogoPreview" style="max-width:150px" />
+                    </div>
+                    <div class="form-group mt-3">
+                        <label asp-for="Logo" class="control-label pb-2"> </label>
+                        <input asp-for="Logo" id="Logo" class="form-control Logo" />
+                        <span asp-validation-for="Logo" class="text-danger"> </span>
+                    </div>
+                    <div class="form-group mt-3">
+                        <label asp-for="Name" class="control-label pb-2"> </label>
+                        <input asp-for="Name" class="form-control" />
+                        <span asp-validation-for="Name" class="text-danger"> </span>
+                    </div>
+                    <div class="form-group mt-3">
+                        <label asp-for="Desc" class="control-label pb-2"> </label>
+                        <textarea asp-for="Desc" class="form-control"> </textarea>
+                        <span asp-validation-for="Desc" class="text-danger"> </span>
+                    </div>
+                    <div class="form-control mt-3">
+                        <input type="submit" class="btn btn-outline-success float-right" value="Update" />
+                        <a class="btn btn-outline-secondary" asp-controller="Cinemas" asp-action="Index">Show All</a> |
+                        <a asp-controller="Cinemas" asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-outline-danger float-right"> <i class="fa fa-trash"></i> Delete</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

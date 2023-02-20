@@ -1,0 +1,39 @@
+﻿@model MovieShop.Models.Cinema
+
+@{
+    ViewData["Title"] = "Delete Cinema";
+}
+
+<div class="row">
+    <div class="col-md-8 offset-2">
+        <div class="border-1 bg-light p-5 m-4">
+            <h2 class="text-danger"> Are you sure you want to delete @Model.Name data? </h2>
+            <h4 class="text-warning fw-bold">Action done is not reversible!</h4>
+        </div>
+        <div class="row">
+            <div class="col-md-8 offset-2">
+                <div class="form-group text-center">
+                    <img id="LogoPreview" class="border-info rounded-circle LogoPreview" style="max-width:150px" />
+                </div>
+                <div class="form-group mt-3">
+                    <label asp-for="Logo" class="control-label pb-2"> </label>
+                    <input asp-for="Logo" readonly id="Logo" class="form-control Logo" />
+                </div>
+                <div class="form-group mt-3">
+                    <label asp-for="Name" class="control-label pb-2"> </label>
+                    <input asp-for="Name" readonly class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger"> </span>
+                </div>
+                <div class="form-group mt-3">
+                    <label asp-for="Desc" class="control-label pb-2"> </label>
+                    <textarea asp-for="Desc" readonly class="form-control"> </textarea>
+                </div>
+                <div class="form-control mt-3">
+                    <a asp-controller="Cinemas" asp-action="DeleteActor" asp-route-id="@Model.Id" class="btn btn-outline-danger float-right"> <i class="fa fa-trash-arrow-up"></i> Confirm Delete</a> |
+                    <a class="btn btn-outline-primary" asp-route-id="@Model.Id" asp-controller="Cinemas" asp-action="Edit"> <i class="fa fa-pencil"></i> Edit</a> |
+                    <a asp-controller="Cinemas" asp-action="Index" class="btn btn-outline-warning float-right"> <i class="fa fa-cancel"></i> Cancel</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

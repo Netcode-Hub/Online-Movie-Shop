@@ -1,0 +1,41 @@
+﻿@model MovieShop.Models.Actor
+
+@{
+    ViewData["Title"] = "Create Actor";
+}
+
+<div class="row">
+    <div class="col-md-8 offset-2">
+        <p><h1> Add a New Actor </h1></p>
+        <div class="row">
+            <div class="col-md-8 offset-2">
+                <form asp-action="Create" asp-controller="Actors">
+                    <div asp-validation-summary="All" class="text-danger"> </div>
+                    <div class="form-group text-center">
+                        <img id="ProfilePicturePreview" class="border-info rounded-circle" style="max-width:150px" />
+                    </div>
+                    <div class="form-group mt-3">
+                        <label asp-for="ProfilePictureURL" class="control-label pb-2"> </label>
+                        <input asp-for="ProfilePictureURL" id="ProfilePictureURL" class="form-control" />
+                        <span asp-validation-for="ProfilePictureURL" class="text-danger"> </span>
+                    </div>
+                    <div class="form-group mt-3">
+                        <label asp-for="FullName" class="control-label pb-2"> </label>
+                        <input asp-for="FullName" class="form-control" />
+                        <span asp-validation-for="FullName" class="text-danger"> </span>
+                    </div>
+                    <div class="form-group mt-3">
+                        <label asp-for="Bio" class="control-label pb-2"> </label>
+                        <textarea asp-for="Bio" class="form-control"> </textarea>
+                        <span asp-validation-for="Bio" class="text-danger"> </span>
+                    </div>
+                   <div class="form-control mt-3">
+                        <input type="submit" value="Create" class="btn btn-outline-success float-right" /> |
+                        <a class="btn btn-outline-secondary" asp-action="Index">Show All</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+

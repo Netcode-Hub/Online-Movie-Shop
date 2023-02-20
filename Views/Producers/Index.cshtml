@@ -1,0 +1,44 @@
+﻿@model IEnumerable<Producer>
+
+@{
+    ViewData["Title"] = "List of Producers";
+}
+
+<div class="row">
+    <p class="display-4 fw-bold text-primary text-center"> List of Producers </p>
+    <div class="col-md-8 offset-md-2">
+        <table class="table table-striped p-3" border="1">
+            <thead class="bg-primary text-center fw-bold text-light">
+                <tr>
+                    <th>Id</th>
+                    <th>Picture</th>
+                    <th>Full Name</th>
+                    <th>Manage</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr class="text-center">
+                        <td>@Html.DisplayFor(modelItem => item.Id)</td>
+                        <td><img src="@item.ProfilePictureURL" alt="@item.FullName" width="100" height="100" class="rounded-circle border-0" /></td>
+                        <td>@Html.DisplayFor(modelItem => item.FullName)</td>
+                        <td>
+                            <a asp-action="Edit" asp-controller="Producers" asp-route-id="@item.Id" class="btn btn-outline-primary"><i class="fa fa-pencil"></i> Edit</a> |
+                            <a asp-action="Details" asp-controller="Producers" asp-route-id="@item.Id" class="btn btn-outline-info"><i class="fa fa-eye"></i> Details</a> |
+                            <a asp-action="Delete" asp-controller="Producers" asp-route-id="@item.Id" class="btn btn-outline-danger"><i class="fa fa-trash"></i> Delete</a>
+                        </td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="text-white" style="position: fixed; right: 25px; bottom: 25px;">
+    <a asp-controller="Producers" asp-action="Create" class="btn btn-success">
+        <i class="fa fa-plus"> </i> Add New Producer
+    </a>
+</div>
+
